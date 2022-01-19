@@ -25,3 +25,19 @@ st.title("Smart Irrigation System")
 #                  │                         │                   │ rassberry-pi │
 #                  └─────────────────────────┘                   │              │
 #                                                                └──────────────┘
+
+with st.form("my_form"):
+    st.header("🌐 Enter the name of City and Select Temperature Unit")
+    place  = st.text_input("NAME OF THE CITY ", " ")
+    unit   = st.selectbox(" SELECT TEMPERATURE UNIT 🌡 ", ("Celsius", "Fahrenheit"))
+    g_type = st.selectbox("SELECT GRAPH TYPE 📉 ", ("Line Graph", "Bar Graph"))
+    solar_r= st.number_input("Solar Radiance in",00.1,step=0.1,format="%.2f")
+    radiance_unit=st.selectbox("Unit of radiance ", ("MJ/m^2day", "kWh/m^2day"))
+    t0 = st.number_input("Orignal Time in hours",0.1,step=0.01,format="%.2f")
+    h  = st.number_input("Irrigation Hight in mm",1,step=1,format="%i")
+
+    auto=st.checkbox("Manual")
+
+    b = st.form_submit_button("Submit")
+if radiance_unit=="kWh/m^2day":
+    solar_r=solar_r*3.6
