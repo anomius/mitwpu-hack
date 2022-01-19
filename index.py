@@ -41,3 +41,25 @@ with st.form("my_form"):
     b = st.form_submit_button("Submit")
 if radiance_unit=="kWh/m^2day":
     solar_r=solar_r*3.6
+
+# To deceive error of pyplot global warning
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
+def plot_line(days, min_t, max_t):
+    days = dates.date2num(days)
+    rcParams['figure.figsize'] = 6, 4
+    plt.plot(days, max_t, color='black', linestyle='solid', linewidth=1, marker='o', markerfacecolor='green',
+             markersize=7)
+    plt.plot(days, min_t, color='black', linestyle='solid', linewidth=1, marker='o', markerfacecolor='blue',
+             markersize=7)
+    plt.ylim(min(min_t) - 4, max(max_t) + 4)
+    plt.xticks(days)
+    x_y_axis = plt.gca()
+    xaxis_format = dates.DateFormatter('%d/%m')
+
+    x_y_axis.xaxis.set_major_formatter(xaxis_format)
+    plt.grid(True, color='brown')
+    plt.legend(["Maximum Temperature", "Minimum Temperature"], loc=1)
+    plt.xlabel('Dates(dd/mm)')
+    plt.ylabel('Temperature')
+    plt.title('6-Day Weather Forecast')
