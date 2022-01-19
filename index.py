@@ -7,7 +7,7 @@ import math
 from api import owm
 import time
 from pyowm.commons.exceptions import NotFoundError
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 # Streamlit Display
 st.set_page_config(layout="centered")
@@ -182,4 +182,47 @@ def plot(days, min_t, max_t):
         plot_line(days, min_t, max_t)
     elif g_type == "Bar Graph":
         plot_bars(days, min_t, max_t)
+
+def get_ev(tmin,tmax,rs):
+    if tmax>35:
+        alpha=1.1+0.05*(tmax-35)
+    elif tmax<5:
+        alpha=0.01*math.exp(0.18*(tmax+20))
+    else:
+        alpha=1.1
+    
+    e=alpha*(3.87*0.001*rs*(0.6*tmax+0.4*tmin+29))
+    return e
+
+def get_time(e,t,h):
+    time=t*(1+(e/h))
+    return time
+
+def relay(time,debug=True):
+    st.write(f"the delay is set for {time*3600}")
+    if not debug:
+        sec=(time)*3600 #converting in sec
+        RELAY_1_GPIO = 17 #pin board numbers 11
+        GPIO.setup(RELAY_1_GPIO, GPIO.OUT) # GPIO Assign mode
+        GPIO.output(RELAY_1_GPIO, GPIO.HIGH) # on
+        time.sleep(sec)
+        GPIO.output(RELAY_1_GPIO, GPIO.LOW) # out
+
+        
+if auto:
+                with st.form("Time"):
+                    time=st.slider("Enter time in Hours",min_value=0.01,max_value=10.,step=0.01,format="%.2f") 
+                    done = st.form_submit_button("ok")
+                relay(time)   
+
+if b:
+    if place != "":
+        try:
+            tmin,tmax=weather_detail(place, unit, g_type)
+            rec_time=get_time(get_ev(tmin,tmax,solar_r),t0,h)
+            st.write(f"the time for irrigation is {rec_time}")
+            relay(rec_time)
+
+        except NotFoundError:
+            st.write("Please enter a Valid city name")
 
