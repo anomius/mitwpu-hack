@@ -33,7 +33,7 @@ with st.form("my_form"):
     g_type = st.selectbox("SELECT GRAPH TYPE 📉 ", ("Line Graph", "Bar Graph"))
     solar_r= st.number_input("Solar Radiance in",00.1,step=0.1,format="%.2f")
     radiance_unit=st.selectbox("Unit of radiance ", ("MJ/m^2day", "kWh/m^2day"))
-    t0 = st.number_input("Orignal Time in hours",0.1,step=0.01,format="%.2f")
+    t0 = st.number_input("Original Time in hours",0.1,step=0.01,format="%.2f")
     h  = st.number_input("Irrigation Hight in mm",1,step=1,format="%i")
 
     auto=st.checkbox("Manual")
