@@ -1,4 +1,5 @@
 mitwpu-hack/
 .vscode/
+__pycache__/
 
-API.py
+api.py
