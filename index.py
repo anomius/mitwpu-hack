@@ -137,3 +137,49 @@ def weather_detail(place, unit, g_type):
         if not max_t[-1] or temperature > max_t[-1]:
             max_t[-1] = temperature
 
+        obs = mgr.weather_at_place(place)
+    weather = obs.weather
+    weather_exp = st.expander(label='Current Weather')
+    with weather_exp:
+        st.title(f"Weather at {place[0].upper() + place[1:]} currently: ")
+        if unit_c == 'celsius':
+            st.write(f"#### 🌡️ Temperature: {temperature} °C")
+        else:
+            st.write(f"#### 🌡️  Temperature: {temperature} F")
+        st.write(f"#### ☁️ Sky: {weather.detailed_status}")
+        st.write(f"#### 🌪  Wind Speed: {round(weather.wind(unit='km_hour')['speed'])} km/h")
+        st.write(f"#### ⛅️Sunrise Time :     {weather.sunrise_time(timeformat='iso')} GMT")
+        st.write(f"#### ☁️  Sunset Time :      {weather.sunset_time(timeformat='iso')} GMT")
+
+    # Expected Temperature Alerts
+    alert_exp = st.expander(label='Expected Temperature Changes/Alerts:')
+    with alert_exp:
+        if forecaster.will_have_fog():
+            st.write("### ▶️FOG ALERT🌁!!")
+        if forecaster.will_have_rain():
+            st.write("### ▶️RAIN ALERT☔!!")
+        if forecaster.will_have_storm():
+            st.write("### ▶️STORM ALERT⛈️!!")
+        if forecaster.will_have_snow():
+            st.write("### ▶️ SNOW ALERT❄️!!")
+        if forecaster.will_have_tornado():
+            st.write("### ▶️TORNADO ALERT🌪️!!")
+        if forecaster.will_have_hurricane():
+            st.write("### ▶️HURRICANE ALERT🌀")
+        if forecaster.will_have_clear():
+            st.write("### ▶️CLEAR WEATHER PREDICTED🌞!!")
+        if forecaster.will_have_clouds():
+            st.write("### ▶️CLOUDY SKIES⛅")
+
+    st.write('                ')
+    st.write('                ')
+    plot(days, min_t, max_t)
+    return min_t[0],max_t[0]
+
+
+def plot(days, min_t, max_t):
+    if g_type == "Line Graph":
+        plot_line(days, min_t, max_t)
+    elif g_type == "Bar Graph":
+        plot_bars(days, min_t, max_t)
+
