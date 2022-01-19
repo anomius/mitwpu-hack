@@ -63,3 +63,19 @@ def plot_line(days, min_t, max_t):
     plt.xlabel('Dates(dd/mm)')
     plt.ylabel('Temperature')
     plt.title('6-Day Weather Forecast')
+
+    for i in range(5):
+        plt.text(days[i], min_t[i] - 1.5, min_t[i],
+                 horizontalalignment='center',
+                 verticalalignment='bottom',
+                 color='black')
+    for i in range(5):
+        plt.text(days[i], max_t[i] + 0.5, max_t[i],
+                 horizontalalignment='center',
+                 verticalalignment='bottom',
+                 color='black')
+    # plt.show()
+    # plt.savefig('figure_line.png')
+    st.pyplot()
+    plt.clf()
+
