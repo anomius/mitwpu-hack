@@ -1,28 +1,14 @@
 # MIT-WPU Octathon 2022
 
----
-<br>
-<h1 style="width:100%;text-align: center;">SigmaChads<h1>
-<br>
-<div align="centre" style="display: grid;grid-template-columns: 1fr 1fr">
-    <div align="centre" style="box-shadow: 0 4px 8px 0 rgba(6,6,6,0.2);
-    border-radius: 5px;
-    width:50%">
-        <img src=https://i.ibb.co/q5rx5sj/Swaraj-Purohit1.png" alt="Avatar" style="width:30%">
-        <div style="width:100%;text-align: center;">
-            <a href="https://swarajpurohit.me"><h4>Swaraj Purohit</h4></a>
-        </div>
-    </div>
-    <div align="centre" style="box-shadow: 0 4px 8px 0 rgba(6,6,6,0.2);
-    border-radius: 5px;
-    width:50%">
-        <img src="https://avatars.githubusercontent.com/u/61881158?v=4" alt="Avatar" style="width:30%">
-        <div style="width:100%;text-align: center;">
-            <a href="https://github.com/Pratyush-svg"><h4>Pratuysh Jha</h4></a>
-        </div>
-    </div>
 
-</div>
+
+# SigmaChads
+
+<u>[<img src="https://i.ibb.co/q5rx5sj/Swaraj-Purohit1.png" style="zoom:33%;" /><br> **Swaraj Purohit**](https://swarajpurohit.me)</u>
+
+
+
+<u>[<img src="https://avatars.githubusercontent.com/u/61881158?v=4" style="zoom: 50%;" /><br> **Pratyush Jha**](https://github.com/Pratyush-svg)</u>
 
 ---
 
