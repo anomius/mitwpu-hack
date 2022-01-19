@@ -107,3 +107,33 @@ def plot_bars(days, min_t, max_t):
     st.pyplot()
     plt.clf()
 
+def weather_detail(place, unit, g_type):
+    mgr = owm.weather_manager()
+    days = []
+    dates_2 = []
+    min_t = []
+    max_t = []
+    forecaster = mgr.forecast_at_place(place, '3h')
+    forecast = forecaster.forecast
+    obs = mgr.weather_at_place(place)
+    weather = obs.weather
+    temperature = weather.temperature(unit='celsius')['temp']
+    if unit == 'Celsius':
+        unit_c = 'celsius'
+    else:
+        unit_c = 'fahrenheit'
+
+    for weather in forecast:
+        day = datetime.utcfromtimestamp(weather.reference_time())
+        date1 = day.date()
+        if date1 not in dates_2:
+            dates_2.append(date1)
+            min_t.append(None)
+            max_t.append(None)
+            days.append(date1)
+        temperature = weather.temperature(unit_c)['temp']
+        if not min_t[-1] or temperature < min_t[-1]:
+            min_t[-1] = temperature
+        if not max_t[-1] or temperature > max_t[-1]:
+            max_t[-1] = temperature
+
