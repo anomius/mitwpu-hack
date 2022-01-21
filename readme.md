@@ -4,11 +4,11 @@
 
 # SigmaChads
 
-<u>[<img src="https://i.ibb.co/q5rx5sj/Swaraj-Purohit1.png" style="zoom:33%;" /><br> **Swaraj Purohit**](https://swarajpurohit.me)</u>
+<u>[<img src="https://i.ibb.co/q5rx5sj/Swaraj-Purohit1.png" style="zoom:20%;" /><br> **Swaraj Purohit**](https://swarajpurohit.me)</u>
 
 
 
-<u>[<img src="https://avatars.githubusercontent.com/u/61881158?v=4" style="zoom: 50%;" /><br> **Pratyush Jha**](https://github.com/Pratyush-svg)</u>
+<u>[<img src="https://avatars.githubusercontent.com/u/61881158?v=4" style="zoom: 20%;" /><br> **Pratyush Jha**](https://github.com/Pratyush-svg)</u>
 
 ---
 
